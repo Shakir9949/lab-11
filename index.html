@@ -9,6 +9,19 @@
 <body>
   <div class="container">
     <h1>Nightstalker Inventory System</h1>
+
+    <form id="productForm">
+      <input type="text" id="name" placeholder="Product Name" required />
+      <input type="number" id="price" placeholder="Price" step="0.01" required />
+      <input type="number" id="quantity" placeholder="Quantity" required />
+      <input type="date" id="expirationDate" placeholder="Expiration Date (Optional)" />
+      <button type="submit">Add Product</button>
+    </form>
+
+    <div class="actions">
+      <button id="applyDiscount">Apply 15% Discount</button>
+    </div>
+
     <div class="output" id="output"></div>
   </div>
   <script src="script.js"></script>
