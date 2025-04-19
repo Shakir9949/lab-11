@@ -1,4 +1,3 @@
-// Part 1: Product base class
 class Product {
     constructor(name, price, quantity) {
       this.name = name;
@@ -21,7 +20,6 @@ class Product {
     }
   }
   
-  // Part 2: PerishableProduct subclass
   class PerishableProduct extends Product {
     constructor(name, price, quantity, expirationDate) {
       super(name, price, quantity);
@@ -33,7 +31,6 @@ class Product {
     }
   }
   
-  // Part 4: Store class
   class Store {
     constructor() {
       this.inventory = [];
@@ -50,42 +47,40 @@ class Product {
     findProductByName(name) {
       return this.inventory.find(product => product.name.toLowerCase() === name.toLowerCase()) || null;
     }
+  
+    displayInventory(outputElement) {
+      outputElement.innerText = `Total Inventory Value: $${this.getInventoryValue().toFixed(2)}\n\n`;
+      this.inventory.forEach(product => {
+        outputElement.innerText += product.toString() + '\n';
+      });
+    }
   }
   
-  // Part 5: Testing the System
+  const store = new Store();
   const output = document.getElementById('output');
   
-  const store = new Store();
+  document.getElementById('productForm').addEventListener('submit', (e) => {
+    e.preventDefault();
   
-  // Create products
-  const prod1 = new Product("Keyboard", 49.99, 15);
-  const prod2 = new Product("Mouse", 29.99, 30);
-  const prod3 = new Product("Monitor", 159.99, 10);
-  const perishable1 = new PerishableProduct("Milk", 3.99, 20, "2025-05-10");
-  const perishable2 = new PerishableProduct("Yogurt", 1.49, 50, "2025-04-25");
+    const name = document.getElementById('name').value.trim();
+    const price = parseFloat(document.getElementById('price').value);
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const expirationDate = document.getElementById('expirationDate').value;
   
-  // Add to store
-  [prod1, prod2, prod3, perishable1, perishable2].forEach(product => store.addProduct(product));
+    let product;
+    if (expirationDate) {
+      product = new PerishableProduct(name, price, quantity, expirationDate);
+    } else {
+      product = new Product(name, price, quantity);
+    }
   
-  // Output before discount
-  output.innerText += `Inventory Value (Before Discount): $${store.getInventoryValue().toFixed(2)}\n\n`;
+    store.addProduct(product);
+    store.displayInventory(output);
   
-  store.inventory.forEach(product => {
-    output.innerText += product.toString() + '\n';
+    e.target.reset();
   });
   
-  // Apply 15% discount
-  Product.applyDiscount(store.inventory, 0.15);
-  
-  // Output after discount
-  output.innerText += `\nInventory Value (After 15% Discount): $${store.getInventoryValue().toFixed(2)}\n\n`;
-  
-  store.inventory.forEach(product => {
-    output.innerText += product.toString() + '\n';
-  });
-  
-  // Find a specific product
-  const searchName = "Milk";
-  const foundProduct = store.findProductByName(searchName);
-  output.innerText += `\nSearch Result for "${searchName}":\n`;
-  output.innerText += foundProduct ? foundProduct.toString() : "Product not found.";  
+  document.getElementById('applyDiscount').addEventListener('click', () => {
+    Product.applyDiscount(store.inventory, 0.15);
+    store.displayInventory(output);
+  });  
