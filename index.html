@@ -19,14 +19,21 @@
         <button type="submit" class="nightstalker-btn">Add Product</button>
     </form>
   
-    <!-- Discount button -->
+    <!-- Discount buttons -->
     <div class="actions">
         <button id="applyDiscount" class="nightstalker-btn">Apply 15% Discount</button>
+    </div>
+
+    <!-- Custom discount slider -->
+    <div class="slider-section">
+      <label for="discountRange">Discount (%): <span id="discountValue">15%</span></label>
+      <input type="range" id="discountRange" min="0" max="50" value="15" />
+      <button id="applyCustomDiscount" class="nightstalker-btn">Apply Discount</button>
     </div>
   
     <!-- Output display -->
     <div class="output" id="output"></div>
-    </div>
+  </div>
 
   <!-- Link to JavaScript -->
   <script src="script.js"></script>
