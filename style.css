@@ -5,9 +5,9 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1a1a2e;
     color: #c3aed6;
-  }
+}
   
-  .container {
+.container {
     max-width: 800px;
     margin: 50px auto;
     background: #0f0f1c;
@@ -15,16 +15,16 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 20px #6c5ce7;
     border: 1px solid #8c7ae6;
-  }
+}
   
-  h1 {
+h1 {
     text-align: center;
     color: #9d4edd;
     margin-bottom: 20px;
-  }
+}
   
-  /* Input and form layout */
-  form input {
+/* Input and form layout */
+form input {
     display: block;
     width: 100%;
     margin: 10px 0;
@@ -34,13 +34,13 @@ body {
     font-size: 1rem;
     background: #2d2a4a;
     color: #fff;
-  }
+}
   
-  form input::placeholder {
+form input::placeholder {
     color: #b8a1d9;
-  }
+}
 
-  .nightstalker-btn {
+.nightstalker-btn {
     display: block;
     width: 100%;
     padding: 14px;
@@ -54,14 +54,14 @@ body {
     box-shadow: 0 0 12px #9d4edd;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     cursor: pointer;
-  }
+}
   
-  .nightstalker-btn:hover {
+.nightstalker-btn:hover {
     transform: scale(1.03);
     box-shadow: 0 0 20px #a29bfe, 0 0 40px #5f27cd;
-  }
+}
   
-  .output {
+.output {
     white-space: pre-line;
     font-family: 'Courier New', Courier, monospace;
     padding: 10px;
@@ -69,5 +69,54 @@ body {
     border-radius: 10px;
     border: 1px solid #6a4c93;
     margin-top: 20px;
-  }
-  
+}
+
+/* Slider section */
+.slider-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.slider-section label {
+    color: #b88aff;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Nightstalker themed slider */
+#discountRange {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 12px;
+    background: #2d2a4a;
+    border-radius: 10px;
+    outline: none;
+    transition: background 0.3s;
+    margin-bottom: 10px;
+}
+
+#discountRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9d4edd;
+    cursor: pointer;
+    box-shadow: 0 0 10px #c77dff;
+    transition: transform 0.2s;
+}
+
+#discountRange::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+#discountRange::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #9d4edd;
+    cursor: pointer;
+    box-shadow: 0 0 10px #c77dff;
+}
